@@ -25,16 +25,23 @@ class EmployeeRecyclerViewAdapter(private val listOfEmployees: List<Employee>)
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): EmployeeRecyclerViewAdapter.ItemViewHolder {
+    ): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.activity_main, parent, false)
         return ItemViewHolder(view)
     }
 
     override fun onBindViewHolder(
-        holder: EmployeeRecyclerViewAdapter.ItemViewHolder,
+        holder: ItemViewHolder,
         position: Int
     ) {
+        val item : Employee = listOfEmployees[position]
+
+        holder.photo.setImageResource(item.photo)
+        holder.employeeid.setText(item.id)
+        holder.firstname.setText(item.firstname)
+        holder.middlename.setText(item.middlename)
+        holder.lastname.setText(item.lastname)
     }
 
     override fun getItemCount(): Int = listOfEmployees.size
